@@ -32,6 +32,9 @@
             session_start();
             $_SESSION['loggedIn'] = true;
             $_SESSION['Email'] = $Email;
+            $cookie_name = "Email";
+             $cookie_value = $GLOBALS['Email']; 
+             setcookie($cookie_name, $cookie_value,time()+(86400*30));
             echo "<br>";
             echo 'You have entered valid use name and password';
             header('Location:logout.php');
