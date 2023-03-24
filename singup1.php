@@ -33,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                        echo "user added to database";
                        header('Location:login1.php');
                      }
-
+else{
+   echo "there is an eror";
+}
             function test_input($data)
             { 
                 $data = trim($data);
