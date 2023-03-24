@@ -30,8 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                        $database = $client->newdata;
                        $collection = $database->users;
                        $insertOneResult = $collection->insertOne(['username' => $name,'email' => $email,'password' => $password,]);
-                       echo "user added to database";
-                       header('Location:login1.php');
+                       echo '<script type ="text/JavaScript">';  
+                        echo 'alert(" user added successfully ")';  
+                        echo '</script>';  
+                       header('Refresh: 0; URL = login1.php');
                      }
 else{
    echo "there is an eror";

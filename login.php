@@ -14,20 +14,16 @@
          echo $mongoCLient;
          $database = $mongoClient->newdata;
          $collection = $database->users;
-         echo $collection;
          //echo "hii";
          if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['Email']) && !empty($_POST['password'])) {
             //echo "hello";
          $Email= $_POST['Email'];
          echo "<br>";
-         echo $Email;
+         
          $password = $_POST['password'];
-         echo $Email;
+         
          //echo $password;
          $user = $collection->findOne(['email' => $_POST['Email']]);
-         echo $user["email"];
-         echo $password;
-         echo $user['password'];
       if ($password==$user['password']) {
             session_start();
             $_SESSION['loggedIn'] = true;
@@ -36,11 +32,16 @@
              $cookie_value = $GLOBALS['Email']; 
              setcookie($cookie_name, $cookie_value,time()+(86400*30));
             echo "<br>";
-            echo 'You have entered valid use name and password';
-            header('Location:logout.php');
+            echo '<script type ="text/JavaScript">';  
+            echo 'alert("You have entered valid use name and password")';  
+            echo '</script>';  
+            header('Refresh:0,url=logout.php');
          } 
   else {
-    echo "Invalid username or password";
+   echo '<script type ="text/JavaScript">';  
+   echo 'alert("invalid credentials")';  
+   echo '</script>';
+   header('Location:login1.php');
   }
 }
 
